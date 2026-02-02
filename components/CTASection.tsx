@@ -1,5 +1,6 @@
 "use client"
 
+import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 
 interface CTASectionProps {
@@ -17,24 +18,48 @@ export function CTASection({ onCTAClick }: CTASectionProps) {
   }
 
   return (
-    <section className="bg-[#0A0A0A] py-32 px-6">
-      <div className="mx-auto max-w-3xl text-center">
-        <h2 className="font-serif text-3xl font-bold tracking-tight text-white md:text-4xl lg:text-5xl text-balance">
+    <section className="relative py-40 px-6 overflow-hidden">
+      {/* Background with subtle gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0A] via-[#0D0D0D] to-[#0A0A0A]" />
+      
+      {/* Decorative lines */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C5A059]/20 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C5A059]/20 to-transparent" />
+      
+      <motion.div 
+        className="relative mx-auto max-w-3xl text-center"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
+      >
+        <p className="text-xs uppercase tracking-[0.3em] text-[#C5A059] mb-6">
+          Exclusive Access
+        </p>
+        <h2 className="font-serif text-3xl font-bold tracking-tight text-white md:text-4xl lg:text-5xl text-balance leading-tight">
           Ready to Explore the Aurelian Collection?
         </h2>
-        <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
+        <p className="mt-8 text-lg text-muted-foreground leading-relaxed max-w-xl mx-auto">
           Join an exclusive network of discerning investors with access to
           properties never listed on public markets.
         </p>
-        <Button
-          variant="gold"
-          size="lg"
-          onClick={handleClick}
-          className="mt-10 px-8 py-6 text-base md:text-lg"
+        <div className="mt-8 mx-auto w-24 h-px bg-gradient-to-r from-transparent via-[#C5A059]/50 to-transparent" />
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
         >
-          REQUEST A PRIVATE CONSULTATION
-        </Button>
-      </div>
+          <Button
+            variant="gold"
+            size="lg"
+            onClick={handleClick}
+            className="mt-12 px-10 py-7 text-base md:text-lg tracking-wider transition-all duration-400 hover:shadow-[0_0_40px_rgba(197,160,89,0.35)] hover:-translate-y-1"
+          >
+            REQUEST A PRIVATE CONSULTATION
+          </Button>
+        </motion.div>
+      </motion.div>
     </section>
   )
 }

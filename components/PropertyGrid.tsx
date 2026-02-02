@@ -4,6 +4,7 @@ import React from "react"
 
 import { useState } from "react"
 import Image from "next/image"
+import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Skeleton } from "@/components/ui/skeleton"
 import { properties, type Property } from "@/lib/constants"
@@ -17,10 +18,12 @@ function PropertyCard({
   property,
   onPropertyClick,
   onCTAClick,
+  index,
 }: {
   property: Property
   onPropertyClick: (property: Property) => void
   onCTAClick: () => void
+  index: number
 }) {
   const [imageLoaded, setImageLoaded] = useState(false)
   const [imageError, setImageError] = useState(false)
@@ -37,8 +40,20 @@ function PropertyCard({
   }
 
   return (
-    <div
-      className="group relative cursor-pointer overflow-hidden rounded-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-xl"
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ 
+        duration: 0.8, 
+        delay: index * 0.15,
+        ease: [0.23, 1, 0.32, 1]
+      }}
+      whileHover={{ 
+        y: -8, 
+        transition: { duration: 0.4, ease: [0.23, 1, 0.32, 1] }
+      }}
+      className="group relative cursor-pointer overflow-hidden rounded-xl bg-[#1A1A1A]"
       onClick={() => onPropertyClick(property)}
       role="button"
       tabIndex={0}
@@ -47,55 +62,69 @@ function PropertyCard({
           onPropertyClick(property)
         }
       }}
+      style={{
+        boxShadow: "0 4px 20px rgba(0,0,0,0.3)",
+      }}
     >
+      {/* Gold overlay on hover */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#C5A059]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-10 rounded-xl" />
+      
       {/* Image Container - 4:5 Aspect Ratio */}
       <div className="relative aspect-[4/5] w-full overflow-hidden">
-        {/* Skeleton Loader */}
+        {/* Shimmer Skeleton Loader */}
         {!imageLoaded && !imageError && (
-          <Skeleton className="absolute inset-0 bg-slate-800" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#1A1A1A] via-[#2D2D2D] to-[#1A1A1A] animate-shimmer" 
+               style={{ backgroundSize: "200% 100%" }} />
         )}
 
-        {/* Fallback Gradient (on error) */}
+        {/* Fallback Gradient */}
         {imageError && (
           <div className="absolute inset-0 bg-gradient-to-br from-slate-900 to-slate-800" />
         )}
 
-        {/* Actual Image */}
+        {/* Image with blur-to-sharp transition */}
         <Image
           src={property.image || "/placeholder.svg"}
           alt={`${property.name} - ${property.location}`}
           fill
-          className={`object-cover transition-all duration-500 group-hover:scale-105 ${
-            imageLoaded ? "opacity-100" : "opacity-0"
-          }`}
+          className={`object-cover transition-all duration-700 ease-out ${
+            imageLoaded ? "opacity-100 blur-0 scale-100" : "opacity-0 blur-lg scale-105"
+          } group-hover:scale-110 group-hover:brightness-110`}
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           onLoad={() => setImageLoaded(true)}
           onError={() => setImageError(true)}
         />
 
-        {/* Hover Overlay with CTA */}
-        <div className="absolute inset-0 flex items-center justify-center bg-black/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-          <Button
-            variant="gold"
-            onClick={handleViewingClick}
-            className="transform transition-transform duration-300 group-hover:scale-100 scale-90"
+        {/* Premium Hover Overlay with CTA */}
+        <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 transition-all duration-500 group-hover:opacity-100">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
           >
-            REQUEST PRIVATE VIEWING
-          </Button>
+            <Button
+              variant="gold"
+              onClick={handleViewingClick}
+              className="transform transition-all duration-400 scale-90 group-hover:scale-100 hover:shadow-[0_0_25px_rgba(197,160,89,0.4)]"
+            >
+              REQUEST PRIVATE VIEWING
+            </Button>
+          </motion.div>
         </div>
       </div>
 
-      {/* Property Info */}
-      <div className="bg-[#1A1A1A] p-6">
-        <h3 className="font-serif text-xl font-semibold text-white">
+      {/* Property Info with enhanced styling */}
+      <div className="p-6 relative">
+        <div className="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-[#C5A059]/20 to-transparent" />
+        <h3 className="font-serif text-xl font-semibold text-white tracking-tight group-hover:text-[#C5A059] transition-colors duration-300">
           {property.name}
         </h3>
-        <p className="mt-1 text-sm text-muted-foreground">{property.location}</p>
-        <p className="mt-3 text-xs uppercase tracking-widest text-muted-foreground">
+        <p className="mt-2 text-sm text-muted-foreground">{property.location}</p>
+        <p className="mt-4 text-xs uppercase tracking-[0.2em] text-muted-foreground/70">
           {property.price}
         </p>
       </div>
-    </div>
+    </motion.div>
   )
 }
 
@@ -105,24 +134,36 @@ export function PropertyGrid({ onCTAClick }: PropertyGridProps) {
   return (
     <section id="properties" className="bg-[#0A0A0A] py-32 px-6">
       <div className="mx-auto max-w-7xl">
-        {/* Section Header */}
-        <div className="mb-16 text-center">
+        {/* Section Header with Animation */}
+        <motion.div 
+          className="mb-20 text-center"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
+        >
+          <p className="text-xs uppercase tracking-[0.3em] text-[#C5A059] mb-4">
+            Exclusive Properties
+          </p>
           <h2 className="font-serif text-3xl font-bold tracking-tight text-white md:text-4xl lg:text-5xl">
             The Aurelian Collection
           </h2>
-          <p className="mt-4 text-lg text-muted-foreground">
-            Meticulously Curated Portfolio
+          <p className="mt-6 text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed">
+            Meticulously curated portfolio of the world&apos;s most distinguished residences
           </p>
-        </div>
+          {/* Decorative Line */}
+          <div className="mt-8 mx-auto w-24 h-px bg-gradient-to-r from-transparent via-[#C5A059]/50 to-transparent" />
+        </motion.div>
 
         {/* Property Grid */}
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {properties.map((property) => (
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
+          {properties.map((property, index) => (
             <PropertyCard
               key={property.id}
               property={property}
               onPropertyClick={setSelectedProperty}
               onCTAClick={onCTAClick}
+              index={index}
             />
           ))}
         </div>

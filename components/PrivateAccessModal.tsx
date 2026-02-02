@@ -136,22 +136,23 @@ export function PrivateAccessModal({
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-lg bg-[#1A1A1A] border-slate-800">
-        <DialogHeader>
-          <DialogTitle className="font-serif text-2xl font-bold text-white">
+      <DialogContent className="max-w-lg bg-[#1A1A1A] border border-[#C5A059]/10 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.7),0_0_40px_rgba(197,160,89,0.08)] backdrop-blur-xl animate-in slide-in-from-bottom-4 duration-500">
+        <DialogHeader className="space-y-4">
+          <div className="mx-auto w-16 h-px bg-gradient-to-r from-transparent via-[#C5A059]/50 to-transparent" />
+          <DialogTitle className="font-serif text-2xl font-bold text-white tracking-tight text-center">
             Private Access Request
           </DialogTitle>
-          <DialogDescription className="text-muted-foreground">
+          <DialogDescription className="text-muted-foreground text-center">
             {propertyName
               ? `Inquiring about ${propertyName}`
-              : "Access our exclusive portfolio"}
+              : "Access our exclusive portfolio of distinguished properties"}
           </DialogDescription>
         </DialogHeader>
 
-        <form onSubmit={handleSubmit} className="mt-6 space-y-6">
+        <form onSubmit={handleSubmit} className="mt-8 space-y-6">
           {/* Name */}
-          <div className="space-y-2">
-            <Label htmlFor="name" className="text-white">
+          <div className="space-y-2 group">
+            <Label htmlFor="name" className="text-white/80 text-sm tracking-wide">
               Full Name
             </Label>
             <Input
@@ -161,17 +162,17 @@ export function PrivateAccessModal({
               onChange={(e) =>
                 setFormData((prev) => ({ ...prev, name: e.target.value }))
               }
-              className="bg-[#0A0A0A] border-0 border-b border-slate-700 rounded-none text-white placeholder:text-muted-foreground focus:border-b-[#C5A059] focus-visible:ring-0"
+              className="bg-transparent border-0 border-b border-[#2D2D2D] rounded-none text-white placeholder:text-muted-foreground/50 focus:border-b-[#C5A059] focus-visible:ring-0 transition-all duration-300 focus:shadow-[0_2px_0_#C5A059]"
               placeholder="Your full name"
             />
             {errors.name && (
-              <p className="text-xs text-red-500">{errors.name}</p>
+              <p className="text-xs text-red-400 mt-1">{errors.name}</p>
             )}
           </div>
 
           {/* Email */}
           <div className="space-y-2">
-            <Label htmlFor="email" className="text-white">
+            <Label htmlFor="email" className="text-white/80 text-sm tracking-wide">
               Email
             </Label>
             <Input
@@ -181,17 +182,17 @@ export function PrivateAccessModal({
               onChange={(e) =>
                 setFormData((prev) => ({ ...prev, email: e.target.value }))
               }
-              className="bg-[#0A0A0A] border-0 border-b border-slate-700 rounded-none text-white placeholder:text-muted-foreground focus:border-b-[#C5A059] focus-visible:ring-0"
+              className="bg-transparent border-0 border-b border-[#2D2D2D] rounded-none text-white placeholder:text-muted-foreground/50 focus:border-b-[#C5A059] focus-visible:ring-0 transition-all duration-300 focus:shadow-[0_2px_0_#C5A059]"
               placeholder="your@email.com"
             />
             {errors.email && (
-              <p className="text-xs text-red-500">{errors.email}</p>
+              <p className="text-xs text-red-400 mt-1">{errors.email}</p>
             )}
           </div>
 
           {/* Phone */}
           <div className="space-y-2">
-            <Label htmlFor="phone" className="text-white">
+            <Label htmlFor="phone" className="text-white/80 text-sm tracking-wide">
               Phone (International)
             </Label>
             <Input
@@ -201,17 +202,17 @@ export function PrivateAccessModal({
               onChange={(e) =>
                 setFormData((prev) => ({ ...prev, phone: e.target.value }))
               }
-              className="bg-[#0A0A0A] border-0 border-b border-slate-700 rounded-none text-white placeholder:text-muted-foreground focus:border-b-[#C5A059] focus-visible:ring-0"
+              className="bg-transparent border-0 border-b border-[#2D2D2D] rounded-none text-white placeholder:text-muted-foreground/50 focus:border-b-[#C5A059] focus-visible:ring-0 transition-all duration-300 focus:shadow-[0_2px_0_#C5A059]"
               placeholder="+1 212 555 0198"
             />
             {errors.phone && (
-              <p className="text-xs text-red-500">{errors.phone}</p>
+              <p className="text-xs text-red-400 mt-1">{errors.phone}</p>
             )}
           </div>
 
           {/* Investment Capacity */}
           <div className="space-y-2">
-            <Label htmlFor="investment" className="text-white">
+            <Label htmlFor="investment" className="text-white/80 text-sm tracking-wide">
               Investment Capacity
             </Label>
             <select
@@ -223,35 +224,35 @@ export function PrivateAccessModal({
                   investmentCapacity: e.target.value,
                 }))
               }
-              className="w-full bg-[#0A0A0A] border-0 border-b border-slate-700 rounded-none text-white py-2 focus:border-b-[#C5A059] focus:outline-none"
+              className="w-full bg-transparent border-0 border-b border-[#2D2D2D] rounded-none text-white py-2 focus:border-b-[#C5A059] focus:outline-none transition-all duration-300 focus:shadow-[0_2px_0_#C5A059]"
             >
-              <option value="" disabled>
+              <option value="" disabled className="bg-[#1A1A1A]">
                 Select investment range
               </option>
               {investmentCapacities.map((capacity) => (
-                <option key={capacity} value={capacity}>
+                <option key={capacity} value={capacity} className="bg-[#1A1A1A]">
                   {capacity}
                 </option>
               ))}
             </select>
             {errors.investmentCapacity && (
-              <p className="text-xs text-red-500">{errors.investmentCapacity}</p>
+              <p className="text-xs text-red-400 mt-1">{errors.investmentCapacity}</p>
             )}
           </div>
 
           {/* Desired Locations */}
           <div className="space-y-3">
-            <Label className="text-white">Desired Locations</Label>
+            <Label className="text-white/80 text-sm tracking-wide">Desired Locations</Label>
             <div className="flex flex-wrap gap-2">
               {desiredLocations.map((location) => (
                 <button
                   key={location}
                   type="button"
                   onClick={() => handleLocationToggle(location)}
-                  className={`px-4 py-2 text-sm rounded-full border transition-all ${
+                  className={`px-4 py-2.5 text-sm rounded-full border transition-all duration-300 ${
                     formData.desiredLocations.includes(location)
-                      ? "bg-[#C5A059] text-black border-[#C5A059]"
-                      : "bg-transparent text-white border-slate-700 hover:border-[#C5A059]"
+                      ? "bg-[#C5A059] text-black border-[#C5A059] shadow-[0_0_15px_rgba(197,160,89,0.3)]"
+                      : "bg-transparent text-white/80 border-[#2D2D2D] hover:border-[#C5A059]/50 hover:text-white"
                   }`}
                 >
                   {location}
@@ -259,7 +260,7 @@ export function PrivateAccessModal({
               ))}
             </div>
             {errors.desiredLocations && (
-              <p className="text-xs text-red-500">{errors.desiredLocations}</p>
+              <p className="text-xs text-red-400 mt-1">{errors.desiredLocations}</p>
             )}
           </div>
 
@@ -268,16 +269,16 @@ export function PrivateAccessModal({
             type="submit"
             variant="gold"
             size="lg"
-            className="w-full"
+            className="w-full mt-8 transition-all duration-400 hover:shadow-[0_0_30px_rgba(197,160,89,0.3)] hover:-translate-y-0.5"
             disabled={isSubmitting}
           >
             {isSubmitting ? "Submitting..." : "REQUEST ACCESS"}
           </Button>
 
           {/* Security Badge */}
-          <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground">
-            <Lock className="h-3 w-3" />
-            <span>SSL Secured</span>
+          <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground pt-2">
+            <Lock className="h-3 w-3 text-[#C5A059]/60" />
+            <span>SSL Secured | Your information is protected</span>
           </div>
         </form>
       </DialogContent>
