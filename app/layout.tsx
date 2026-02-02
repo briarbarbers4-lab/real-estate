@@ -2,6 +2,7 @@ import React from "react"
 import type { Metadata } from 'next'
 import { Inter, Playfair_Display } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 import './globals.css'
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -49,6 +50,7 @@ export default function RootLayout({
       <body className="font-sans antialiased bg-[#0A0A0A] text-white">
         {children}
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   )
