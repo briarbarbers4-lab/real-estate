@@ -60,7 +60,7 @@ export default function Home() {
   }
 
   return (
-    <main className="min-h-screen bg-[#0A0A0A]">
+    <div className="min-h-screen bg-[#0A0A0A]">
       {/* Property Structured Data (JSON-LD) */}
       <PropertyStructuredData />
 
@@ -97,6 +97,6 @@ export default function Home() {
 
       {/* Toast Notifications */}
       <Toaster />
-    </main>
+    </div>
   )
 }

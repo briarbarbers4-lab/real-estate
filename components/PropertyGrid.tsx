@@ -57,8 +57,10 @@ function PropertyCard({
       onClick={() => onPropertyClick(property)}
       role="button"
       tabIndex={0}
+      aria-label={`View details for ${property.name} in ${property.location}`}
       onKeyDown={(e) => {
         if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault()
           onPropertyClick(property)
         }
       }}
@@ -105,7 +107,8 @@ function PropertyCard({
             <Button
               variant="gold"
               onClick={handleViewingClick}
-              className="transform transition-all duration-400 scale-90 group-hover:scale-100 hover:shadow-[0_0_25px_rgba(197,160,89,0.4)]"
+              className="transform transition-all duration-400 scale-90 group-hover:scale-100 hover:shadow-[0_0_25px_rgba(197,160,89,0.4)] min-h-[44px]"
+              aria-label={`Request private viewing for ${property.name}`}
             >
               REQUEST PRIVATE VIEWING
             </Button>

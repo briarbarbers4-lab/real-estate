@@ -136,13 +136,17 @@ export function PrivateAccessModal({
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-lg bg-[#1A1A1A] border border-[#C5A059]/10 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.7),0_0_40px_rgba(197,160,89,0.08)] backdrop-blur-xl animate-in slide-in-from-bottom-4 duration-500">
+      <DialogContent 
+        className="max-w-lg bg-[#1A1A1A] border border-[#C5A059]/10 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.7),0_0_40px_rgba(197,160,89,0.08)] backdrop-blur-xl animate-in slide-in-from-bottom-4 duration-500"
+        aria-labelledby="private-access-title"
+        aria-describedby="private-access-description"
+      >
         <DialogHeader className="space-y-4">
-          <div className="mx-auto w-16 h-px bg-gradient-to-r from-transparent via-[#C5A059]/50 to-transparent" />
-          <DialogTitle className="font-serif text-2xl font-bold text-white tracking-tight text-center">
+          <div className="mx-auto w-16 h-px bg-gradient-to-r from-transparent via-[#C5A059]/50 to-transparent" aria-hidden="true" />
+          <DialogTitle id="private-access-title" className="font-serif text-2xl font-bold text-white tracking-tight text-center">
             Private Access Request
           </DialogTitle>
-          <DialogDescription className="text-muted-foreground text-center">
+          <DialogDescription id="private-access-description" className="text-muted-foreground text-center">
             {propertyName
               ? `Inquiring about ${propertyName}`
               : "Access our exclusive portfolio of distinguished properties"}
@@ -162,11 +166,16 @@ export function PrivateAccessModal({
               onChange={(e) =>
                 setFormData((prev) => ({ ...prev, name: e.target.value }))
               }
-              className="bg-transparent border-0 border-b border-[#2D2D2D] rounded-none text-white placeholder:text-muted-foreground/50 focus:border-b-[#C5A059] focus-visible:ring-0 transition-all duration-300 focus:shadow-[0_2px_0_#C5A059]"
+              className="bg-transparent border-0 border-b border-[#2D2D2D] rounded-none text-white placeholder:text-muted-foreground/50 focus:border-b-[#C5A059] focus-visible:ring-0 transition-all duration-300 focus:shadow-[0_2px_0_#C5A059] min-h-[44px]"
               placeholder="Your full name"
+              aria-required="true"
+              aria-invalid={errors.name ? "true" : "false"}
+              aria-describedby={errors.name ? "name-error" : undefined}
             />
             {errors.name && (
-              <p className="text-xs text-red-400 mt-1">{errors.name}</p>
+              <p id="name-error" className="text-xs text-red-400 mt-1" role="alert">
+                {errors.name}
+              </p>
             )}
           </div>
 
@@ -182,11 +191,16 @@ export function PrivateAccessModal({
               onChange={(e) =>
                 setFormData((prev) => ({ ...prev, email: e.target.value }))
               }
-              className="bg-transparent border-0 border-b border-[#2D2D2D] rounded-none text-white placeholder:text-muted-foreground/50 focus:border-b-[#C5A059] focus-visible:ring-0 transition-all duration-300 focus:shadow-[0_2px_0_#C5A059]"
+              className="bg-transparent border-0 border-b border-[#2D2D2D] rounded-none text-white placeholder:text-muted-foreground/50 focus:border-b-[#C5A059] focus-visible:ring-0 transition-all duration-300 focus:shadow-[0_2px_0_#C5A059] min-h-[44px]"
               placeholder="your@email.com"
+              aria-required="true"
+              aria-invalid={errors.email ? "true" : "false"}
+              aria-describedby={errors.email ? "email-error" : undefined}
             />
             {errors.email && (
-              <p className="text-xs text-red-400 mt-1">{errors.email}</p>
+              <p id="email-error" className="text-xs text-red-400 mt-1" role="alert">
+                {errors.email}
+              </p>
             )}
           </div>
 
@@ -202,11 +216,16 @@ export function PrivateAccessModal({
               onChange={(e) =>
                 setFormData((prev) => ({ ...prev, phone: e.target.value }))
               }
-              className="bg-transparent border-0 border-b border-[#2D2D2D] rounded-none text-white placeholder:text-muted-foreground/50 focus:border-b-[#C5A059] focus-visible:ring-0 transition-all duration-300 focus:shadow-[0_2px_0_#C5A059]"
+              className="bg-transparent border-0 border-b border-[#2D2D2D] rounded-none text-white placeholder:text-muted-foreground/50 focus:border-b-[#C5A059] focus-visible:ring-0 transition-all duration-300 focus:shadow-[0_2px_0_#C5A059] min-h-[44px]"
               placeholder="+1 212 555 0198"
+              aria-required="true"
+              aria-invalid={errors.phone ? "true" : "false"}
+              aria-describedby={errors.phone ? "phone-error" : undefined}
             />
             {errors.phone && (
-              <p className="text-xs text-red-400 mt-1">{errors.phone}</p>
+              <p id="phone-error" className="text-xs text-red-400 mt-1" role="alert">
+                {errors.phone}
+              </p>
             )}
           </div>
 
@@ -224,7 +243,10 @@ export function PrivateAccessModal({
                   investmentCapacity: e.target.value,
                 }))
               }
-              className="w-full bg-transparent border-0 border-b border-[#2D2D2D] rounded-none text-white py-2 focus:border-b-[#C5A059] focus:outline-none transition-all duration-300 focus:shadow-[0_2px_0_#C5A059]"
+              className="w-full bg-transparent border-0 border-b border-[#2D2D2D] rounded-none text-white py-2 focus:border-b-[#C5A059] focus:outline-none transition-all duration-300 focus:shadow-[0_2px_0_#C5A059] min-h-[44px]"
+              aria-required="true"
+              aria-invalid={errors.investmentCapacity ? "true" : "false"}
+              aria-describedby={errors.investmentCapacity ? "investment-error" : undefined}
             >
               <option value="" disabled className="bg-[#1A1A1A]">
                 Select investment range
@@ -236,31 +258,44 @@ export function PrivateAccessModal({
               ))}
             </select>
             {errors.investmentCapacity && (
-              <p className="text-xs text-red-400 mt-1">{errors.investmentCapacity}</p>
+              <p id="investment-error" className="text-xs text-red-400 mt-1" role="alert">
+                {errors.investmentCapacity}
+              </p>
             )}
           </div>
 
           {/* Desired Locations */}
           <div className="space-y-3">
-            <Label className="text-white/80 text-sm tracking-wide">Desired Locations</Label>
-            <div className="flex flex-wrap gap-2">
+            <Label className="text-white/80 text-sm tracking-wide" id="locations-label">
+              Desired Locations
+            </Label>
+            <div 
+              className="flex flex-wrap gap-2"
+              role="group"
+              aria-labelledby="locations-label"
+              aria-required="true"
+            >
               {desiredLocations.map((location) => (
                 <button
                   key={location}
                   type="button"
                   onClick={() => handleLocationToggle(location)}
-                  className={`px-4 py-2.5 text-sm rounded-full border transition-all duration-300 ${
+                  className={`px-4 py-2.5 text-sm rounded-full border transition-all duration-300 min-h-[44px] min-w-[44px] ${
                     formData.desiredLocations.includes(location)
                       ? "bg-[#C5A059] text-black border-[#C5A059] shadow-[0_0_15px_rgba(197,160,89,0.3)]"
                       : "bg-transparent text-white/80 border-[#2D2D2D] hover:border-[#C5A059]/50 hover:text-white"
                   }`}
+                  aria-pressed={formData.desiredLocations.includes(location)}
+                  aria-label={`${location}${formData.desiredLocations.includes(location) ? ' selected' : ''}`}
                 >
                   {location}
                 </button>
               ))}
             </div>
             {errors.desiredLocations && (
-              <p className="text-xs text-red-400 mt-1">{errors.desiredLocations}</p>
+              <p className="text-xs text-red-400 mt-1" role="alert" id="locations-error">
+                {errors.desiredLocations}
+              </p>
             )}
           </div>
 
@@ -269,8 +304,9 @@ export function PrivateAccessModal({
             type="submit"
             variant="gold"
             size="lg"
-            className="w-full mt-8 transition-all duration-400 hover:shadow-[0_0_30px_rgba(197,160,89,0.3)] hover:-translate-y-0.5"
+            className="w-full mt-8 transition-all duration-400 hover:shadow-[0_0_30px_rgba(197,160,89,0.3)] hover:-translate-y-0.5 min-h-[44px]"
             disabled={isSubmitting}
+            aria-label={isSubmitting ? "Submitting request" : "Submit private access request"}
           >
             {isSubmitting ? "Submitting..." : "REQUEST ACCESS"}
           </Button>

@@ -56,7 +56,8 @@ export function Footer({ onCTAClick }: FooterProps) {
                   </span>
                   <a
                     href={`tel:${office.phone.replace(/\s/g, "")}`}
-                    className="hover:text-[#C5A059] transition-colors duration-300"
+                    className="hover:text-[#C5A059] transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-[#C5A059] focus-visible:outline-offset-2 rounded-sm px-1"
+                    aria-label={`Call ${office.city} office at ${office.phone}`}
                   >
                     {office.phone}
                   </a>
@@ -75,10 +76,11 @@ export function Footer({ onCTAClick }: FooterProps) {
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    className="text-sm text-muted-foreground hover:text-white transition-colors duration-300 relative group"
+                    className="text-sm text-muted-foreground hover:text-white transition-colors duration-300 relative group focus-visible:outline-2 focus-visible:outline-[#C5A059] focus-visible:outline-offset-2 rounded-sm px-1"
+                    aria-label={`Navigate to ${link.label}`}
                   >
                     {link.label}
-                    <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-[#C5A059] transition-all duration-300 group-hover:w-full" />
+                    <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-[#C5A059] transition-all duration-300 group-hover:w-full" aria-hidden="true" />
                   </a>
                 </li>
               ))}
@@ -96,7 +98,8 @@ export function Footer({ onCTAClick }: FooterProps) {
             <Button 
               variant="gold" 
               onClick={handleClick}
-              className="transition-all duration-400 hover:shadow-[0_0_25px_rgba(197,160,89,0.3)] hover:-translate-y-0.5"
+              className="transition-all duration-400 hover:shadow-[0_0_25px_rgba(197,160,89,0.3)] hover:-translate-y-0.5 min-h-[44px]"
+              aria-label="Open inquiry form"
             >
               INQUIRE NOW
             </Button>

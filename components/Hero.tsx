@@ -154,7 +154,8 @@ export function Hero({ onCTAClick }: HeroProps) {
             variant="gold"
             size="lg"
             onClick={handleCTAClick}
-            className="mt-12 px-10 py-7 text-base md:text-lg tracking-wider transition-all duration-400 hover:shadow-[0_0_30px_rgba(197,160,89,0.3)] hover:-translate-y-0.5"
+            className="mt-12 px-10 py-7 text-base md:text-lg tracking-wider transition-all duration-400 hover:shadow-[0_0_30px_rgba(197,160,89,0.3)] hover:-translate-y-0.5 min-h-[44px]"
+            aria-label="Enter the Aurelian Collection"
           >
             ENTER THE COLLECTION
           </Button>

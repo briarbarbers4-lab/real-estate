@@ -44,14 +44,18 @@ export function PropertyModal({
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-4xl bg-[#1A1A1A] border border-[#C5A059]/10 p-0 overflow-hidden shadow-[0_25px_50px_-12px_rgba(0,0,0,0.7),0_0_40px_rgba(197,160,89,0.08)]">
+      <DialogContent 
+        className="max-w-4xl bg-[#1A1A1A] border border-[#C5A059]/10 p-0 overflow-hidden shadow-[0_25px_50px_-12px_rgba(0,0,0,0.7),0_0_40px_rgba(197,160,89,0.08)]"
+        aria-labelledby="property-modal-title"
+        aria-describedby="property-modal-description"
+      >
         <button
           type="button"
           onClick={onClose}
-          className="absolute right-4 top-4 z-10 rounded-full bg-black/50 p-2 text-white transition-colors hover:bg-black/70"
-          aria-label="Close modal"
+          className="absolute right-4 top-4 z-10 rounded-full bg-black/50 p-2 text-white transition-colors hover:bg-black/70 focus-visible:outline-2 focus-visible:outline-[#C5A059] focus-visible:outline-offset-2 min-w-[44px] min-h-[44px] flex items-center justify-center"
+          aria-label="Close property details modal"
         >
-          <X className="h-5 w-5" />
+          <X className="h-5 w-5" aria-hidden="true" />
         </button>
 
         <motion.div
@@ -90,15 +94,23 @@ export function PropertyModal({
           {/* Content */}
           <div className="p-8 flex flex-col">
             <DialogHeader>
-              <DialogTitle className="font-serif text-2xl font-bold text-white md:text-3xl tracking-tight">
+              <DialogTitle 
+                id="property-modal-title"
+                className="font-serif text-2xl font-bold text-white md:text-3xl tracking-tight"
+              >
                 {property.name}
               </DialogTitle>
-              <p className="text-[#C5A059] mt-2">{property.location}</p>
+              <p className="text-[#C5A059] mt-2" aria-label={`Location: ${property.location}`}>
+                {property.location}
+              </p>
               {/* Decorative line */}
-              <div className="mt-4 w-16 h-px bg-gradient-to-r from-[#C5A059]/50 to-transparent" />
+              <div className="mt-4 w-16 h-px bg-gradient-to-r from-[#C5A059]/50 to-transparent" aria-hidden="true" />
             </DialogHeader>
 
-            <p className="mt-6 text-muted-foreground leading-relaxed text-base">
+            <p 
+              id="property-modal-description"
+              className="mt-6 text-muted-foreground leading-relaxed text-base"
+            >
               {property.description}
             </p>
 
@@ -107,7 +119,7 @@ export function PropertyModal({
               <h4 className="text-sm font-semibold uppercase tracking-wider text-white mb-4">
                 Features
               </h4>
-              <ul className="grid grid-cols-2 gap-3">
+              <ul className="grid grid-cols-2 gap-3" aria-label="Property features">
                 {property.features.map((feature, index) => (
                   <motion.li
                     key={feature}
@@ -116,7 +128,7 @@ export function PropertyModal({
                     transition={{ delay: index * 0.1, duration: 0.3 }}
                     className="text-sm text-muted-foreground flex items-center gap-2"
                   >
-                    <span className="h-1.5 w-1.5 rounded-full bg-[#C5A059] flex-shrink-0" />
+                    <span className="h-1.5 w-1.5 rounded-full bg-[#C5A059] flex-shrink-0" aria-hidden="true" />
                     {feature}
                   </motion.li>
                 ))}
@@ -124,7 +136,7 @@ export function PropertyModal({
             </div>
 
             {/* Price */}
-            <p className="mt-8 text-xs uppercase tracking-widest text-muted-foreground">
+            <p className="mt-8 text-xs uppercase tracking-widest text-muted-foreground" aria-label={`Price: ${property.price}`}>
               {property.price}
             </p>
 
@@ -134,7 +146,8 @@ export function PropertyModal({
                 variant="gold"
                 size="lg"
                 onClick={handleCTAClick}
-                className="w-full transition-all duration-400 hover:shadow-[0_0_30px_rgba(197,160,89,0.3)] hover:-translate-y-0.5"
+                className="w-full transition-all duration-400 hover:shadow-[0_0_30px_rgba(197,160,89,0.3)] hover:-translate-y-0.5 min-h-[44px]"
+                aria-label={`Request private viewing for ${property.name}`}
               >
                 REQUEST PRIVATE VIEWING
               </Button>

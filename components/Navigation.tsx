@@ -53,7 +53,8 @@ export function Navigation({ onInquireClick }: NavigationProps) {
           {/* Logo */}
           <a
             href="#"
-            className="font-serif text-xl font-bold tracking-[0.15em] text-white transition-colors duration-300 hover:text-[#C5A059]"
+            className="font-serif text-xl font-bold tracking-[0.15em] text-white transition-colors duration-300 hover:text-[#C5A059] focus-visible:outline-2 focus-visible:outline-[#C5A059] focus-visible:outline-offset-2 rounded-sm"
+            aria-label="Aurelian Estates - Home"
           >
             AURELIAN
           </a>
@@ -64,13 +65,14 @@ export function Navigation({ onInquireClick }: NavigationProps) {
               <motion.a
                 key={link.label}
                 href={link.href}
-                className="relative text-sm font-medium text-white/70 transition-colors duration-300 hover:text-white group"
+                className="relative text-sm font-medium text-white/70 transition-colors duration-300 hover:text-white group focus-visible:outline-2 focus-visible:outline-[#C5A059] focus-visible:outline-offset-2 rounded-sm px-1"
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 * index + 0.3 }}
+                aria-label={`Navigate to ${link.label} section`}
               >
                 {link.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-px bg-[#C5A059] transition-all duration-300 group-hover:w-full" />
+                <span className="absolute -bottom-1 left-0 w-0 h-px bg-[#C5A059] transition-all duration-300 group-hover:w-full" aria-hidden="true" />
               </motion.a>
             ))}
             <motion.div
@@ -82,7 +84,8 @@ export function Navigation({ onInquireClick }: NavigationProps) {
                 variant="gold"
                 size="sm"
                 onClick={handleCTAClick}
-                className="ml-4 px-6 tracking-wider transition-all duration-400 hover:shadow-[0_0_20px_rgba(197,160,89,0.3)] hover:-translate-y-0.5"
+                className="ml-4 px-6 tracking-wider transition-all duration-400 hover:shadow-[0_0_20px_rgba(197,160,89,0.3)] hover:-translate-y-0.5 min-h-[44px]"
+                aria-label="Open inquiry form"
               >
                 INQUIRE
               </Button>
@@ -92,11 +95,13 @@ export function Navigation({ onInquireClick }: NavigationProps) {
           {/* Mobile Menu Button */}
           <button
             type="button"
-            className="text-white md:hidden transition-transform duration-300 hover:scale-110"
+            className="text-white md:hidden transition-transform duration-300 hover:scale-110 focus-visible:outline-2 focus-visible:outline-[#C5A059] focus-visible:outline-offset-2 rounded-sm p-2 min-w-[44px] min-h-[44px] flex items-center justify-center"
             onClick={() => setMobileMenuOpen(true)}
-            aria-label="Open menu"
+            aria-label="Open navigation menu"
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-menu"
           >
-            <Menu className="h-6 w-6" />
+            <Menu className="h-6 w-6" aria-hidden="true" />
           </button>
         </div>
       </motion.nav>
@@ -105,23 +110,27 @@ export function Navigation({ onInquireClick }: NavigationProps) {
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div 
+            id="mobile-menu"
             className="fixed inset-0 z-50 bg-[#0A0A0A] md:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="mobile-menu-title"
           >
             <div className="flex h-20 items-center justify-between px-6 border-b border-[#2D2D2D]">
-              <span className="font-serif text-xl font-bold tracking-[0.15em] text-white">
+              <span id="mobile-menu-title" className="font-serif text-xl font-bold tracking-[0.15em] text-white">
                 AURELIAN
               </span>
               <button
                 type="button"
-                className="text-white transition-transform duration-300 hover:scale-110"
+                className="text-white transition-transform duration-300 hover:scale-110 focus-visible:outline-2 focus-visible:outline-[#C5A059] focus-visible:outline-offset-2 rounded-sm p-2 min-w-[44px] min-h-[44px] flex items-center justify-center"
                 onClick={() => setMobileMenuOpen(false)}
-                aria-label="Close menu"
+                aria-label="Close navigation menu"
               >
-                <X className="h-6 w-6" />
+                <X className="h-6 w-6" aria-hidden="true" />
               </button>
             </div>
 
@@ -135,11 +144,12 @@ export function Navigation({ onInquireClick }: NavigationProps) {
                 <motion.a
                   key={link.label}
                   href={link.href}
-                  className="font-serif text-3xl text-white transition-colors duration-300 hover:text-[#C5A059]"
+                  className="font-serif text-3xl text-white transition-colors duration-300 hover:text-[#C5A059] focus-visible:outline-2 focus-visible:outline-[#C5A059] focus-visible:outline-offset-2 rounded-sm px-2 py-1 min-h-[44px] flex items-center"
                   onClick={() => setMobileMenuOpen(false)}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 * index + 0.2 }}
+                  aria-label={`Navigate to ${link.label} section`}
                 >
                   {link.label}
                 </motion.a>
@@ -156,7 +166,8 @@ export function Navigation({ onInquireClick }: NavigationProps) {
                     setMobileMenuOpen(false)
                     handleCTAClick()
                   }}
-                  className="mt-8 px-10 py-6 tracking-wider"
+                  className="mt-8 px-10 py-6 tracking-wider min-h-[44px]"
+                  aria-label="Open inquiry form"
                 >
                   INQUIRE
                 </Button>

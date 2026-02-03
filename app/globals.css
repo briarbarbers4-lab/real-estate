@@ -136,10 +136,53 @@ body {
   to { opacity: 1; }
 }
 
-/* Focus states with gold accent */
+/* Focus states with gold accent - WCAG AA compliant */
 *:focus-visible {
-  outline: 2px solid rgba(197, 160, 89, 0.5);
+  outline: 2px solid #C5A059;
   outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Enhanced focus for buttons */
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid #C5A059;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(197, 160, 89, 0.2);
+}
+
+/* Focus for form inputs */
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #C5A059;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.2);
+}
+
+/* Skip link styling */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.sr-only:focus {
+  position: fixed;
+  width: auto;
+  height: auto;
+  padding: 0.5rem 1rem;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  z-index: 9999;
 }
 
 /* Premium button hover glow */

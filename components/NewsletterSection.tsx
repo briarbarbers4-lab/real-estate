@@ -75,19 +75,27 @@ export function NewsletterSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
+          aria-label="Newsletter subscription form"
         >
+          <label htmlFor="newsletter-email" className="sr-only">
+            Email address for newsletter subscription
+          </label>
           <Input
+            id="newsletter-email"
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="your@email.com"
-            className="flex-1 bg-transparent border border-[#2D2D2D] rounded-lg px-5 py-6 text-white placeholder:text-muted-foreground/50 focus:border-[#C5A059] focus-visible:ring-0 transition-all duration-300"
+            className="flex-1 bg-transparent border border-[#2D2D2D] rounded-lg px-5 py-6 text-white placeholder:text-muted-foreground/50 focus:border-[#C5A059] focus-visible:ring-0 transition-all duration-300 min-h-[44px]"
+            aria-label="Email address"
+            aria-required="true"
           />
           <Button
             type="submit"
             variant="gold"
             disabled={isSubmitting}
-            className="sm:w-auto px-8 py-6 transition-all duration-400 hover:shadow-[0_0_25px_rgba(197,160,89,0.3)]"
+            className="sm:w-auto px-8 py-6 transition-all duration-400 hover:shadow-[0_0_25px_rgba(197,160,89,0.3)] min-h-[44px]"
+            aria-label={isSubmitting ? "Subscribing to newsletter" : "Subscribe to newsletter"}
           >
             {isSubmitting ? "Subscribing..." : "SUBSCRIBE"}
           </Button>

@@ -54,7 +54,8 @@ export function CTASection({ onCTAClick }: CTASectionProps) {
             variant="gold"
             size="lg"
             onClick={handleClick}
-            className="mt-12 px-10 py-7 text-base md:text-lg tracking-wider transition-all duration-400 hover:shadow-[0_0_40px_rgba(197,160,89,0.35)] hover:-translate-y-1"
+            className="mt-12 px-10 py-7 text-base md:text-lg tracking-wider transition-all duration-400 hover:shadow-[0_0_40px_rgba(197,160,89,0.35)] hover:-translate-y-1 min-h-[44px]"
+            aria-label="Request a private consultation"
           >
             REQUEST A PRIVATE CONSULTATION
           </Button>
