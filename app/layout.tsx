@@ -4,6 +4,8 @@ import { Inter, Playfair_Display } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 import { generateOrganizationSchema, generateBreadcrumbSchema } from '@/lib/schema'
+import { ErrorBoundary } from '@/components/ErrorBoundary'
+import { WebVitals } from '@/components/WebVitals'
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const playfair = Playfair_Display({ 
@@ -133,9 +135,12 @@ export default function RootLayout({
         >
           Skip to main content
         </a>
-        <main id="main-content" tabIndex={-1}>
-          {children}
-        </main>
+        <ErrorBoundary>
+          <main id="main-content" tabIndex={-1}>
+            {children}
+          </main>
+        </ErrorBoundary>
+        <WebVitals />
         <Analytics />
       </body>
     </html>
