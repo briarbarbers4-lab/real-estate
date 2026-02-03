@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { globalOffices, footerLinks } from "@/lib/constants"
+import { trackEvent, ANALYTICS_ACTIONS, ANALYTICS_CATEGORIES } from "@/lib/analytics"
 
 interface FooterProps {
   onCTAClick: () => void
@@ -10,9 +11,10 @@ interface FooterProps {
 
 export function Footer({ onCTAClick }: FooterProps) {
   const handleClick = () => {
-    console.log("CTA_CLICK", {
-      source: "footer",
-      timestamp: Date.now(),
+    trackEvent({
+      action: ANALYTICS_ACTIONS.CLICK,
+      category: ANALYTICS_CATEGORIES.FOOTER,
+      label: "CTA: Inquire Now",
       userAction: "form_open",
     })
     onCTAClick()
@@ -22,9 +24,9 @@ export function Footer({ onCTAClick }: FooterProps) {
     <footer id="contact" className="relative bg-[#0A0A0A]">
       {/* Top border with gold gradient */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C5A059]/30 to-transparent" aria-hidden="true" />
-      
+
       <div className="mx-auto max-w-7xl px-6 py-32">
-        <motion.div 
+        <motion.div
           className="grid grid-cols-1 gap-16 md:grid-cols-4"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -95,8 +97,8 @@ export function Footer({ onCTAClick }: FooterProps) {
             <p className="text-sm text-muted-foreground mb-8 leading-relaxed">
               Ready to discover your next acquisition?
             </p>
-            <Button 
-              variant="gold" 
+            <Button
+              variant="gold"
               onClick={handleClick}
               className="transition-all duration-400 hover:shadow-[0_0_25px_rgba(197,160,89,0.3)] hover:-translate-y-0.5 min-h-[44px]"
               aria-label="Open inquiry form"

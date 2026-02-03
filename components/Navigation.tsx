@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { trackEvent, ANALYTICS_ACTIONS, ANALYTICS_CATEGORIES } from "@/lib/analytics"
 
 interface NavigationProps {
   onInquireClick: () => void
@@ -29,9 +30,10 @@ export function Navigation({ onInquireClick }: NavigationProps) {
   ]
 
   const handleCTAClick = () => {
-    console.log("CTA_CLICK", {
-      source: "nav_inquiry",
-      timestamp: Date.now(),
+    trackEvent({
+      action: ANALYTICS_ACTIONS.CLICK,
+      category: ANALYTICS_CATEGORIES.NAVIGATION,
+      label: "CTA: Inquire",
       userAction: "form_open",
     })
     onInquireClick()
@@ -43,11 +45,10 @@ export function Navigation({ onInquireClick }: NavigationProps) {
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled
-            ? "bg-[#0A0A0A]/90 backdrop-blur-xl border-b border-[#C5A059]/10 shadow-[0_4px_30px_rgba(0,0,0,0.3)]"
-            : "bg-transparent"
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
+          ? "bg-[#0A0A0A]/90 backdrop-blur-xl border-b border-[#C5A059]/10 shadow-[0_4px_30px_rgba(0,0,0,0.3)]"
+          : "bg-transparent"
+          }`}
       >
         <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
           {/* Logo */}
@@ -109,7 +110,7 @@ export function Navigation({ onInquireClick }: NavigationProps) {
       {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {mobileMenuOpen && (
-          <motion.div 
+          <motion.div
             id="mobile-menu"
             className="fixed inset-0 z-50 bg-[#0A0A0A] md:hidden"
             initial={{ opacity: 0 }}
@@ -134,7 +135,7 @@ export function Navigation({ onInquireClick }: NavigationProps) {
               </button>
             </div>
 
-            <motion.div 
+            <motion.div
               className="flex flex-col items-center justify-center gap-10 pt-24"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}

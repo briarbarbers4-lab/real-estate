@@ -5,6 +5,8 @@ import Image from "next/image"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 
+import { trackEvent, ANALYTICS_ACTIONS, ANALYTICS_CATEGORIES } from "@/lib/analytics"
+
 interface HeroProps {
   onCTAClick: () => void
 }
@@ -39,9 +41,10 @@ export function Hero({ onCTAClick }: HeroProps) {
   }, [prefersReducedMotion])
 
   const handleCTAClick = () => {
-    console.log("CTA_CLICK", {
-      source: "hero",
-      timestamp: Date.now(),
+    trackEvent({
+      action: ANALYTICS_ACTIONS.CLICK,
+      category: ANALYTICS_CATEGORIES.HERO,
+      label: "CTA: Enter The Collection",
       userAction: "form_open",
     })
     onCTAClick()
@@ -62,26 +65,26 @@ export function Hero({ onCTAClick }: HeroProps) {
   }
 
   const wordVariants = {
-    hidden: { 
-      opacity: 0, 
+    hidden: {
+      opacity: 0,
       y: prefersReducedMotion ? 0 : 30,
       filter: prefersReducedMotion ? "blur(0px)" : "blur(4px)"
     },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
       filter: "blur(0px)",
-      transition: { 
-        duration: 0.8, 
-        ease: [0.23, 1, 0.32, 1] 
+      transition: {
+        duration: 0.8,
+        ease: [0.23, 1, 0.32, 1]
       },
     },
   }
 
   const subtitleVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
       transition: { duration: 0.8, delay: 0.8, ease: [0.23, 1, 0.32, 1] }
     },
@@ -89,8 +92,8 @@ export function Hero({ onCTAClick }: HeroProps) {
 
   const buttonVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
       transition: { duration: 0.8, delay: 1.0, ease: [0.23, 1, 0.32, 1] }
     },
@@ -110,9 +113,8 @@ export function Hero({ onCTAClick }: HeroProps) {
           alt="Ultra-luxury Mediterranean villa at sunset"
           fill
           priority
-          className={`object-cover transition-all duration-1000 ${
-            imageLoaded ? "opacity-100 blur-0 scale-100" : "opacity-0 blur-lg scale-105"
-          }`}
+          className={`object-cover transition-all duration-1000 ${imageLoaded ? "opacity-100 blur-0 scale-100" : "opacity-0 blur-lg scale-105"
+            }`}
           sizes="100vw"
           onLoad={() => setImageLoaded(true)}
         />
@@ -123,7 +125,7 @@ export function Hero({ onCTAClick }: HeroProps) {
       <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/30 to-black/50" />
 
       {/* Content */}
-      <motion.div 
+      <motion.div
         className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center"
         initial="hidden"
         animate="visible"
@@ -142,7 +144,7 @@ export function Hero({ onCTAClick }: HeroProps) {
           ))}
         </h1>
 
-        <motion.p 
+        <motion.p
           className="mt-8 max-w-2xl text-lg text-white/70 md:text-xl leading-relaxed tracking-wide"
           variants={subtitleVariants}
         >
@@ -163,14 +165,14 @@ export function Hero({ onCTAClick }: HeroProps) {
       </motion.div>
 
       {/* Scroll Indicator */}
-      <motion.div 
+      <motion.div
         className="absolute bottom-8 left-1/2 -translate-x-1/2"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5, duration: 1 }}
       >
         <div className="h-12 w-7 rounded-full border border-white/20 flex items-start justify-center p-2">
-          <motion.div 
+          <motion.div
             className="h-2 w-1 rounded-full bg-[#C5A059]"
             animate={{ y: [0, 16, 0] }}
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}

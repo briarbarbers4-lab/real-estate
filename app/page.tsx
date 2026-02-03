@@ -12,6 +12,7 @@ import { Footer } from "@/components/Footer"
 import { PrivateAccessModal } from "@/components/PrivateAccessModal"
 import { Toaster } from "@/components/ui/toaster"
 import { PropertyStructuredData } from "@/components/PropertyStructuredData"
+import { trackEvent, ANALYTICS_ACTIONS, ANALYTICS_CATEGORIES } from "@/lib/analytics"
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -25,10 +26,12 @@ export default function Home() {
 
       // Track 70% depth (reaching Aurelian Standard section)
       if (scrollDepth >= 70) {
-        console.log("SCROLL_DEPTH", {
-          depth: scrollDepth,
+        trackEvent({
+          action: ANALYTICS_ACTIONS.SCROLL,
+          category: ANALYTICS_CATEGORIES.ENGAGEMENT,
+          label: "Scroll Depth: 70%",
+          value: scrollDepth,
           section: "Aurelian Standard",
-          timestamp: Date.now(),
         })
       }
     }

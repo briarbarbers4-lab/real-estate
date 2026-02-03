@@ -36,9 +36,57 @@ Continue building your app on:
 
 **[https://v0.app/chat/jWcCOIvOzU0](https://v0.app/chat/jWcCOIvOzU0)**
 
-## How It Works
+## 🚀 Getting Started Locally
 
-1. Create and modify your project using [v0.app](https://v0.app)
-2. Deploy your chats from the v0 interface
-3. Changes are automatically pushed to this repository
-4. Vercel deploys the latest version from this repository
+### Prerequisites
+
+- Node.js 18.17 or later
+- npm or pnpm
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/aurelian-estates.git
+   cd aurelian-estates
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   # or
+   pnpm install
+   ```
+
+3. Run the development server:
+   ```bash
+   npm run dev
+   # or
+   pnpm dev
+   ```
+
+4. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## 🛠️ Tech Stack
+
+- **Framework**: [Next.js 16](https://nextjs.org/) (App Router)
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
+- **Components**: [Shadcn/UI](https://ui.shadcn.com/)
+- **Animations**: [Framer Motion](https://www.framer.com/motion/)
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Fonts**: [Playfair Display](https://fonts.google.com/specimen/Playfair+Display) & [Inter](https://fonts.google.com/specimen/Inter)
+
+## 🏗️ Project Structure
+
+```
+app/              # Next.js App Router pages and layouts
+components/       # React components
+  ui/             # Reusable UI primitives (Shadcn)
+lib/              # Utilities, constants, and hooks
+public/           # Static assets (images, fonts)
+styles/           # Global styles
+```
+
+## 📝 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.

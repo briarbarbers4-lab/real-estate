@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button"
 import { Skeleton } from "@/components/ui/skeleton"
 import { properties, type Property } from "@/lib/constants"
 import { PropertyModal } from "@/components/PropertyModal"
+import { trackEvent, ANALYTICS_ACTIONS, ANALYTICS_CATEGORIES } from "@/lib/analytics"
 
 interface PropertyGridProps {
   onCTAClick: () => void
@@ -30,10 +31,11 @@ function PropertyCard({
 
   const handleViewingClick = (e: React.MouseEvent) => {
     e.stopPropagation()
-    console.log("CTA_CLICK", {
-      source: "property_card",
+    trackEvent({
+      action: ANALYTICS_ACTIONS.CLICK,
+      category: ANALYTICS_CATEGORIES.PROPERTY,
+      label: `CTA: Request Private Viewing - ${property.name}`,
       propertyName: property.name,
-      timestamp: Date.now(),
       userAction: "form_open",
     })
     onCTAClick()
@@ -44,13 +46,13 @@ function PropertyCard({
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
-      transition={{ 
-        duration: 0.8, 
+      transition={{
+        duration: 0.8,
         delay: index * 0.15,
         ease: [0.23, 1, 0.32, 1]
       }}
-      whileHover={{ 
-        y: -8, 
+      whileHover={{
+        y: -8,
         transition: { duration: 0.4, ease: [0.23, 1, 0.32, 1] }
       }}
       className="group relative cursor-pointer overflow-hidden rounded-xl bg-[#1A1A1A]"
@@ -70,13 +72,13 @@ function PropertyCard({
     >
       {/* Gold overlay on hover */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#C5A059]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-10 rounded-xl" />
-      
+
       {/* Image Container - 4:5 Aspect Ratio */}
       <div className="relative aspect-[4/5] w-full overflow-hidden">
         {/* Shimmer Skeleton Loader */}
         {!imageLoaded && !imageError && (
-          <div className="absolute inset-0 bg-gradient-to-r from-[#1A1A1A] via-[#2D2D2D] to-[#1A1A1A] animate-shimmer" 
-               style={{ backgroundSize: "200% 100%" }} />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#1A1A1A] via-[#2D2D2D] to-[#1A1A1A] animate-shimmer"
+            style={{ backgroundSize: "200% 100%" }} />
         )}
 
         {/* Fallback Gradient */}
@@ -91,9 +93,8 @@ function PropertyCard({
           fill
           placeholder="blur"
           blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
-          className={`object-cover transition-all duration-700 ease-out ${
-            imageLoaded ? "opacity-100 blur-0 scale-100" : "opacity-0 blur-lg scale-105"
-          } group-hover:scale-110 group-hover:brightness-110`}
+          className={`object-cover transition-all duration-700 ease-out ${imageLoaded ? "opacity-100 blur-0 scale-100" : "opacity-0 blur-lg scale-105"
+            } group-hover:scale-110 group-hover:brightness-110`}
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           loading="lazy"
           onLoad={() => setImageLoaded(true)}
@@ -141,7 +142,7 @@ export function PropertyGrid({ onCTAClick }: PropertyGridProps) {
     <section id="properties" className="bg-[#0A0A0A] py-32 px-6">
       <div className="mx-auto max-w-7xl">
         {/* Section Header with Animation */}
-        <motion.div 
+        <motion.div
           className="mb-20 text-center"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}

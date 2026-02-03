@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
+import { trackEvent, ANALYTICS_ACTIONS, ANALYTICS_CATEGORIES } from "@/lib/analytics"
 
 interface CTASectionProps {
   onCTAClick: () => void
@@ -9,9 +10,10 @@ interface CTASectionProps {
 
 export function CTASection({ onCTAClick }: CTASectionProps) {
   const handleClick = () => {
-    console.log("CTA_CLICK", {
-      source: "cta_section",
-      timestamp: Date.now(),
+    trackEvent({
+      action: ANALYTICS_ACTIONS.CLICK,
+      category: ANALYTICS_CATEGORIES.CTA,
+      label: "CTA: Request Private Consultation",
       userAction: "form_open",
     })
     onCTAClick()
@@ -21,12 +23,12 @@ export function CTASection({ onCTAClick }: CTASectionProps) {
     <section className="relative py-40 px-6 overflow-hidden">
       {/* Background with subtle gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0A] via-[#0D0D0D] to-[#0A0A0A]" />
-      
+
       {/* Decorative lines */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C5A059]/20 to-transparent" aria-hidden="true" />
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C5A059]/20 to-transparent" aria-hidden="true" />
-      
-      <motion.div 
+
+      <motion.div
         className="relative mx-auto max-w-3xl text-center"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
