@@ -14,15 +14,15 @@ Any changes you make to your deployed app will be automatically pushed to this r
 
 ## Documentation
 
-**📚 Complete Documentation**: See [`IMPLEMENTATION_COMPILE.md`](./IMPLEMENTATION_COMPILE.md) for the complete implementation guide, design system, and technical specifications.
+**📚 Project Documentation**: See [`PROJECT_DOCUMENTATION.md`](./PROJECT_DOCUMENTATION.md) for the complete implementation guide, design system, implementation log, and technical specifications.
 
-**✅ Implementation Checklist**: See [`IMPLEMENTATION_PHASES.md`](./IMPLEMENTATION_PHASES.md) for the phased implementation checklist with detailed tasks.
+**✅ QA & Testing**: See [`TESTING.md`](./TESTING.md) for the testing checklist and guide.
 
 ### Quick Links
-- [Complete Implementation Guide](./IMPLEMENTATION_COMPILE.md) - All documentation in one place
-- [Implementation Phases Checklist](./IMPLEMENTATION_PHASES.md) - Step-by-step enhancement checklist
-- [Design System](./IMPLEMENTATION_COMPILE.md#design-system) - Colors, typography, spacing, components
-- [CTA Strategy](./IMPLEMENTATION_COMPILE.md#cta-strategy--placement) - 6 CTA locations and conversion strategy
+- [Complete Project Documentation](./PROJECT_DOCUMENTATION.md)
+- [Design System](./PROJECT_DOCUMENTATION.md#design-system)
+- [Implementation Log](./PROJECT_DOCUMENTATION.md#appendix-implementation-log)
+- [Testing Guide](./TESTING.md)
 
 ## Deployment
 
