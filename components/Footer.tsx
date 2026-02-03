@@ -117,8 +117,15 @@ export function Footer({ onCTAClick }: FooterProps) {
           <p className="text-xs text-muted-foreground/60 tracking-wider">
             Ultra-Luxury Real Estate Portfolio
           </p>
+          <a
+            href="/the-vault"
+            className="text-[10px] text-muted-foreground/20 hover:text-[#C5A059] transition-colors duration-500 uppercase tracking-widest"
+            aria-label="Private Member Access"
+          >
+            ● Member Access
+          </a>
         </div>
       </div>
-    </footer>
+    </footer >
   )
 }

@@ -41,17 +41,7 @@
 - **Result**: Returns a curated, "AI-selected" portfolio subset (using mocked logic for the prototype).
 - **Animation**: "Thinking" state with elegant typography animation.
 
-## 5. Dynamic Ambient Audio (Atmospheres)
-**Concept**: Subtle, high-quality audio soundscapes that change based on context/section.
-**Psychology**: Multi-sensory experiences drastically increase emotional connection and time-on-site.
-**Implementation Details**:
-- **Default State**: Muted (non-intrusive).
-- **Controls**: "Enter Immersion" toggle in the Navigation.
-- **Soundscapes**:
-    - **Coastal**: Distant crashing waves, wind in palms.
-    - **Urban**: Muted city hum, soft jazz.
-    - **The Vault**: Heavy, silent, echoey atmosphere (like a bank vault).
-- **Tech**: Web Audio API for cross-fading and volume management.
+
 
 ---
 

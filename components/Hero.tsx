@@ -1,11 +1,12 @@
-"use client"
-
-import { useEffect, useState } from "react"
+import { useEffect, useState, Suspense } from "react"
 import Image from "next/image"
+import dynamic from "next/dynamic"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 
 import { trackEvent, ANALYTICS_ACTIONS, ANALYTICS_CATEGORIES } from "@/lib/analytics"
+
+const LiquidHero = dynamic(() => import("@/components/LiquidHero"), { ssr: false })
 
 interface HeroProps {
   onCTAClick: () => void
@@ -76,7 +77,7 @@ export function Hero({ onCTAClick }: HeroProps) {
       filter: "blur(0px)",
       transition: {
         duration: 0.8,
-        ease: [0.23, 1, 0.32, 1]
+        ease: [0.23, 1, 0.32, 1] as any
       },
     },
   }
@@ -86,7 +87,7 @@ export function Hero({ onCTAClick }: HeroProps) {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.8, delay: 0.8, ease: [0.23, 1, 0.32, 1] }
+      transition: { duration: 0.8, delay: 0.8, ease: [0.23, 1, 0.32, 1] as any }
     },
   }
 
@@ -95,15 +96,15 @@ export function Hero({ onCTAClick }: HeroProps) {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.8, delay: 1.0, ease: [0.23, 1, 0.32, 1] }
+      transition: { duration: 0.8, delay: 1.0, ease: [0.23, 1, 0.32, 1] as any }
     },
   }
 
   return (
     <section className="relative h-screen w-full overflow-hidden">
-      {/* Background Image with Parallax + Zoom */}
+      {/* Background Image with Parallax + Zoom (Fallback & Underlay) */}
       <div
-        className="absolute inset-0 will-change-transform"
+        className="absolute inset-0 will-change-transform z-0"
         style={{
           transform: `translateY(${parallaxOffset}px) scale(${zoomScale})`,
         }}
@@ -118,8 +119,17 @@ export function Hero({ onCTAClick }: HeroProps) {
           sizes="100vw"
           onLoad={() => setImageLoaded(true)}
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 to-slate-800 -z-10" />
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/50 to-slate-800/50 -z-10" />
       </div>
+
+      {/* WebGL Liquid Gold Effect - Only if no reduced motion */}
+      {!prefersReducedMotion && (
+        <div className="absolute inset-0 z-0">
+          <Suspense fallback={null}>
+            <LiquidHero />
+          </Suspense>
+        </div>
+      )}
 
       {/* Premium Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/30 to-black/50" />
