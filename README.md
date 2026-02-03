@@ -1,4 +1,4 @@
-# Landing page structure
+# Aurelian Estates - Ultra-Luxury Real Estate Landing Page
 
 *Automatically synced with your [v0.app](https://v0.app) deployments*
 
@@ -7,8 +7,22 @@
 
 ## Overview
 
+Ultra-luxury real estate landing page with a gallery-first aesthetic, targeting high-net-worth individuals and institutional investors. Built with Next.js 16, Tailwind CSS v4, and Framer Motion.
+
 This repository will stay in sync with your deployed chats on [v0.app](https://v0.app).
 Any changes you make to your deployed app will be automatically pushed to this repository from [v0.app](https://v0.app).
+
+## Documentation
+
+**📚 Complete Documentation**: See [`IMPLEMENTATION_COMPILE.md`](./IMPLEMENTATION_COMPILE.md) for the complete implementation guide, design system, and technical specifications.
+
+**✅ Implementation Checklist**: See [`IMPLEMENTATION_PHASES.md`](./IMPLEMENTATION_PHASES.md) for the phased implementation checklist with detailed tasks.
+
+### Quick Links
+- [Complete Implementation Guide](./IMPLEMENTATION_COMPILE.md) - All documentation in one place
+- [Implementation Phases Checklist](./IMPLEMENTATION_PHASES.md) - Step-by-step enhancement checklist
+- [Design System](./IMPLEMENTATION_COMPILE.md#design-system) - Colors, typography, spacing, components
+- [CTA Strategy](./IMPLEMENTATION_COMPILE.md#cta-strategy--placement) - 6 CTA locations and conversion strategy
 
 ## Deployment
 

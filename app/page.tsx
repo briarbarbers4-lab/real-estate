@@ -11,6 +11,7 @@ import { NewsletterSection } from "@/components/NewsletterSection"
 import { Footer } from "@/components/Footer"
 import { PrivateAccessModal } from "@/components/PrivateAccessModal"
 import { Toaster } from "@/components/ui/toaster"
+import { PropertyStructuredData } from "@/components/PropertyStructuredData"
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -60,6 +61,9 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-[#0A0A0A]">
+      {/* Property Structured Data (JSON-LD) */}
+      <PropertyStructuredData />
+
       {/* Navigation */}
       <Navigation onInquireClick={() => handleOpenModal()} />
 

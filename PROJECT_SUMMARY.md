@@ -1,5 +1,9 @@
 # AURELIAN ESTATES - PROJECT SUMMARY
 
+> **Note**: This file has been consolidated into `IMPLEMENTATION_COMPILE.md`.  
+> Please refer to `IMPLEMENTATION_COMPILE.md` for the most up-to-date documentation.  
+> This file is kept for reference only.
+
 ## Overview
 Ultra-luxury real estate landing page with a gallery-first aesthetic, targeting high-net-worth individuals and institutional investors. The site converts visitors through strategically placed CTAs (6 locations) and a private access form capturing investment capacity and desired locations.
 

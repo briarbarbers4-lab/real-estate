@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { Inter, Playfair_Display } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
+import { generateOrganizationSchema, generateBreadcrumbSchema } from '@/lib/schema'
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const playfair = Playfair_Display({ 
@@ -11,14 +12,73 @@ const playfair = Playfair_Display({
   variable: "--font-playfair"
 });
 
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://aurelian-estates.vercel.app'
+
 export const metadata: Metadata = {
+  metadataBase: new URL(BASE_URL),
   title: 'Aurelian Estates | Ultra-Luxury Real Estate Portfolio',
   description: 'Discover the world\'s most exclusive properties. Curated ultra-luxury real estate for discerning clientele.',
-  generator: 'v0.app',
+  keywords: [
+    'luxury real estate',
+    'ultra-luxury properties',
+    'high-end real estate',
+    'exclusive properties',
+    'luxury homes',
+    'premium real estate',
+    'private property listings',
+    'off-market properties',
+    'luxury investment properties',
+    'aurelian estates',
+  ],
+  authors: [{ name: 'Aurelian Estates' }],
+  creator: 'Aurelian Estates',
+  publisher: 'Aurelian Estates',
+  generator: 'Next.js',
+  applicationName: 'Aurelian Estates',
+  referrer: 'origin-when-cross-origin',
+  colorScheme: 'dark',
+  themeColor: '#0A0A0A',
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 5,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: BASE_URL,
+    siteName: 'Aurelian Estates',
     title: 'Aurelian Estates | Ultra-Luxury Real Estate Portfolio',
     description: 'Discover the world\'s most exclusive properties. Curated ultra-luxury real estate for discerning clientele.',
-    type: 'website',
+    images: [
+      {
+        url: '/images/hero-cinematic.jpg',
+        width: 1920,
+        height: 1080,
+        alt: 'Ultra-luxury Mediterranean villa at sunset',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Aurelian Estates | Ultra-Luxury Real Estate Portfolio',
+    description: 'Discover the world\'s most exclusive properties. Curated ultra-luxury real estate for discerning clientele.',
+    images: ['/images/hero-cinematic.jpg'],
+    creator: '@aurelianestates', // Update with actual Twitter handle if available
+  },
+  alternates: {
+    canonical: BASE_URL,
   },
   icons: {
     icon: [
@@ -44,8 +104,27 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const organizationSchema = generateOrganizationSchema()
+  const breadcrumbSchema = generateBreadcrumbSchema()
+
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
+      <head>
+        {/* Organization Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationSchema),
+          }}
+        />
+        {/* Breadcrumb Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(breadcrumbSchema),
+          }}
+        />
+      </head>
       <body className="font-sans antialiased bg-[#0A0A0A] text-white">
         {children}
         <Analytics />

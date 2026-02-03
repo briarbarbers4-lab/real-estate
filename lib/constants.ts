@@ -1,5 +1,5 @@
 // Aurelian Estates - Hardcoded Data
-// As per IMPLEMENTATION_KICKSTART.md
+// As per IMPLEMENTATION_COMPILE.md (see root directory for complete documentation)
 
 export interface Property {
   id: number

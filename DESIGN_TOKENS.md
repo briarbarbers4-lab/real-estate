@@ -1,5 +1,11 @@
 # AURELIAN ESTATES - DESIGN TOKENS
 
+> **Note**: This file has been consolidated into `IMPLEMENTATION_COMPILE.md`.  
+> Please refer to `IMPLEMENTATION_COMPILE.md` for the most up-to-date documentation.  
+> This file is kept for reference only.
+
+---
+
 ## Color System
 
 ### Primary Palette

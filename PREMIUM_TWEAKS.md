@@ -1,4 +1,9 @@
 # Premium Design Tweaks: $10K Luxury Website Enhancements
+
+> **Note**: This file has been consolidated into `IMPLEMENTATION_COMPILE.md`.  
+> Please refer to `IMPLEMENTATION_COMPILE.md` for the most up-to-date documentation.  
+> This file is kept for reference only.
+
 ## Elevating Aurelian Estates to High-End Luxury Standard
 
 ---
