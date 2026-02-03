@@ -61,10 +61,10 @@ export function NewsletterSection() {
           <Sparkles className="h-4 w-4" />
           <span>Exclusive Updates</span>
         </div>
-        <h2 className="font-serif text-3xl font-bold tracking-tight text-white md:text-4xl">
+        <h2 className="font-serif text-3xl font-bold tracking-tight text-white md:text-4xl mb-6" style={{ letterSpacing: '-0.02em', lineHeight: '1.1' }}>
           Join the Inner Circle
         </h2>
-        <p className="mt-6 text-muted-foreground leading-relaxed">
+        <p className="mt-6 text-muted-foreground leading-relaxed" style={{ lineHeight: '1.7', letterSpacing: '0.3px' }}>
           Receive curated market insights and first-access to new acquisitions
         </p>
 

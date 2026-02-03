@@ -148,10 +148,74 @@ body {
               inset 0 0 20px rgba(255, 255, 255, 0.05);
 }
 
+/* Enhanced button interactions */
+button[data-slot="button"]:hover {
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+button[data-slot="button"]:active {
+  transform: translateY(0);
+}
+
 /* Gradient divider utility */
 .divider-gold {
   height: 1px;
   background: linear-gradient(90deg, transparent 0%, rgba(197, 160, 89, 0.3) 50%, transparent 100%);
+}
+
+/* Typography refinements */
+.section-title {
+  font-size: 48px;
+  letter-spacing: -1px;
+  line-height: 1.1;
+  margin-bottom: 64px;
+  font-weight: 700;
+  font-family: 'Playfair Display', serif;
+}
+
+.section-subtitle {
+  font-size: 20px;
+  color: #999999;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-weight: 400;
+  margin-bottom: 48px;
+}
+
+/* Enhanced body text */
+body {
+  line-height: 1.7;
+  letter-spacing: 0.3px;
+}
+
+/* Image reveal animation */
+@keyframes imageReveal {
+  from {
+    opacity: 0;
+    filter: blur(10px);
+    transform: scale(1.05);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: scale(1);
+  }
+}
+
+.image-reveal {
+  animation: imageReveal 0.8s ease-out forwards;
+}
+
+/* Modal slide-up animation */
+@keyframes modalSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Reduced motion support */

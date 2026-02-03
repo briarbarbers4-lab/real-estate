@@ -145,14 +145,14 @@ export function PropertyGrid({ onCTAClick }: PropertyGridProps) {
           <p className="text-xs uppercase tracking-[0.3em] text-[#C5A059] mb-4">
             Exclusive Properties
           </p>
-          <h2 className="font-serif text-3xl font-bold tracking-tight text-white md:text-4xl lg:text-5xl">
+          <h2 className="font-serif text-3xl font-bold tracking-tight text-white md:text-4xl lg:text-5xl mb-6" style={{ letterSpacing: '-0.02em', lineHeight: '1.1' }}>
             The Aurelian Collection
           </h2>
-          <p className="mt-6 text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed">
+          <p className="mt-6 text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed" style={{ lineHeight: '1.7', letterSpacing: '0.3px' }}>
             Meticulously curated portfolio of the world&apos;s most distinguished residences
           </p>
           {/* Decorative Line */}
-          <div className="mt-8 mx-auto w-24 h-px bg-gradient-to-r from-transparent via-[#C5A059]/50 to-transparent" />
+          <div className="mt-12 mx-auto w-24 h-px bg-gradient-to-r from-transparent via-[#C5A059]/50 to-transparent" />
         </motion.div>
 
         {/* Property Grid */}

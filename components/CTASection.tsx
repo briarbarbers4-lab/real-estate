@@ -36,14 +36,14 @@ export function CTASection({ onCTAClick }: CTASectionProps) {
         <p className="text-xs uppercase tracking-[0.3em] text-[#C5A059] mb-6">
           Exclusive Access
         </p>
-        <h2 className="font-serif text-3xl font-bold tracking-tight text-white md:text-4xl lg:text-5xl text-balance leading-tight">
+        <h2 className="font-serif text-3xl font-bold tracking-tight text-white md:text-4xl lg:text-5xl text-balance mb-6" style={{ letterSpacing: '-0.02em', lineHeight: '1.1' }}>
           Ready to Explore the Aurelian Collection?
         </h2>
-        <p className="mt-8 text-lg text-muted-foreground leading-relaxed max-w-xl mx-auto">
+        <p className="mt-8 text-lg text-muted-foreground leading-relaxed max-w-xl mx-auto" style={{ lineHeight: '1.7', letterSpacing: '0.3px' }}>
           Join an exclusive network of discerning investors with access to
           properties never listed on public markets.
         </p>
-        <div className="mt-8 mx-auto w-24 h-px bg-gradient-to-r from-transparent via-[#C5A059]/50 to-transparent" />
+        <div className="mt-12 mx-auto w-24 h-px bg-gradient-to-r from-transparent via-[#C5A059]/50 to-transparent" />
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

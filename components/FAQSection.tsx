@@ -24,13 +24,13 @@ export function FAQSection() {
           <p className="text-xs uppercase tracking-[0.3em] text-[#C5A059] mb-4">
             Questions & Answers
           </p>
-          <h2 className="font-serif text-3xl font-bold tracking-tight text-white md:text-4xl lg:text-5xl">
+          <h2 className="font-serif text-3xl font-bold tracking-tight text-white md:text-4xl lg:text-5xl mb-6" style={{ letterSpacing: '-0.02em', lineHeight: '1.1' }}>
             Frequently Asked Questions
           </h2>
-          <p className="mt-6 text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed">
+          <p className="mt-6 text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed" style={{ lineHeight: '1.7', letterSpacing: '0.3px' }}>
             Understanding the Aurelian approach to exceptional real estate
           </p>
-          <div className="mt-8 mx-auto w-24 h-px bg-gradient-to-r from-transparent via-[#C5A059]/50 to-transparent" />
+          <div className="mt-12 mx-auto w-24 h-px bg-gradient-to-r from-transparent via-[#C5A059]/50 to-transparent" />
         </motion.div>
 
         {/* FAQ Accordion with Staggered Animation */}
