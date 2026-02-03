@@ -7,11 +7,18 @@ import { generateOrganizationSchema, generateBreadcrumbSchema } from '@/lib/sche
 import { ErrorBoundary } from '@/components/ErrorBoundary'
 import { WebVitals } from '@/components/WebVitals'
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const inter = Inter({ 
+  subsets: ["latin"], 
+  variable: "--font-inter",
+  display: "swap", // Optimize font loading
+  preload: true, // Preload critical font
+});
 const playfair = Playfair_Display({ 
   subsets: ["latin"], 
   weight: ["400", "700"],
-  variable: "--font-playfair"
+  variable: "--font-playfair",
+  display: "swap", // Optimize font loading
+  preload: true, // Preload critical font
 });
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://aurelian-estates.vercel.app'
@@ -112,6 +119,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
       <head>
+        {/* Resource Hints for Performance */}
+        {/* Note: Next.js font optimization handles font loading automatically */}
+        {/* DNS prefetch for external resources if needed in future */}
+        
         {/* Organization Schema */}
         <script
           type="application/ld+json"

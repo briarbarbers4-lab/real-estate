@@ -10,7 +10,8 @@
     "type-check": "tsc --noEmit",
     "test:accessibility": "echo 'Run Lighthouse accessibility audit or use axe DevTools browser extension'",
     "test:performance": "echo 'Run Lighthouse performance audit in Chrome DevTools'",
-    "test:all": "npm run type-check && npm run lint"
+    "test:all": "npm run type-check && npm run lint",
+    "analyze": "ANALYZE=true next build"
   },
   "dependencies": {
     "@emotion/is-prop-valid": "latest",
