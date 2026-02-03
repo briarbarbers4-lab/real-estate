@@ -21,7 +21,7 @@ export function Footer({ onCTAClick }: FooterProps) {
   return (
     <footer id="contact" className="relative bg-[#0A0A0A]">
       {/* Top border with gold gradient */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C5A059]/30 to-transparent" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C5A059]/30 to-transparent" aria-hidden="true" />
       
       <div className="mx-auto max-w-7xl px-6 py-32">
         <motion.div 
@@ -40,7 +40,7 @@ export function Footer({ onCTAClick }: FooterProps) {
               Curating the world&apos;s most exceptional properties for
               discerning clientele since 1987.
             </p>
-            <div className="mt-6 w-16 h-px bg-gradient-to-r from-[#C5A059]/50 to-transparent" />
+            <div className="mt-6 w-16 h-px bg-gradient-to-r from-[#C5A059]/50 to-transparent" aria-hidden="true" />
           </div>
 
           {/* Global Offices */}

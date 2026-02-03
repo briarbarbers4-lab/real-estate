@@ -118,7 +118,7 @@ function PropertyCard({
 
       {/* Property Info with enhanced styling */}
       <div className="p-6 relative">
-        <div className="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-[#C5A059]/20 to-transparent" />
+        <div className="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-[#C5A059]/20 to-transparent" aria-hidden="true" />
         <h3 className="font-serif text-xl font-semibold text-white tracking-tight group-hover:text-[#C5A059] transition-colors duration-300">
           {property.name}
         </h3>
@@ -155,7 +155,7 @@ export function PropertyGrid({ onCTAClick }: PropertyGridProps) {
             Meticulously curated portfolio of the world&apos;s most distinguished residences
           </p>
           {/* Decorative Line */}
-          <div className="mt-12 mx-auto w-24 h-px bg-gradient-to-r from-transparent via-[#C5A059]/50 to-transparent" />
+          <div className="mt-12 mx-auto w-24 h-px bg-gradient-to-r from-transparent via-[#C5A059]/50 to-transparent" aria-hidden="true" />
         </motion.div>
 
         {/* Property Grid */}

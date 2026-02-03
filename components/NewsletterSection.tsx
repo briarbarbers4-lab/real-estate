@@ -58,7 +58,7 @@ export function NewsletterSection() {
         transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
       >
         <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-[#C5A059] mb-6">
-          <Sparkles className="h-4 w-4" />
+          <Sparkles className="h-4 w-4" aria-hidden="true" />
           <span>Exclusive Updates</span>
         </div>
         <h2 className="font-serif text-3xl font-bold tracking-tight text-white md:text-4xl mb-6" style={{ letterSpacing: '-0.02em', lineHeight: '1.1' }}>

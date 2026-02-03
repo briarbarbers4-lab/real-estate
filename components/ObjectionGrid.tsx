@@ -35,7 +35,7 @@ export function ObjectionGrid() {
           <p className="mt-6 text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed" style={{ lineHeight: '1.7', letterSpacing: '0.3px' }}>
             Our unwavering commitment to excellence in every acquisition
           </p>
-          <div className="mt-12 mx-auto w-24 h-px bg-gradient-to-r from-transparent via-[#C5A059]/50 to-transparent" />
+          <div className="mt-12 mx-auto w-24 h-px bg-gradient-to-r from-transparent via-[#C5A059]/50 to-transparent" aria-hidden="true" />
         </motion.div>
 
         {/* Pillars Grid with Staggered Animation */}
@@ -64,7 +64,7 @@ export function ObjectionGrid() {
                   transition={{ duration: 0.6, delay: index * 0.15 + 0.2 }}
                 >
                   <div className="relative flex h-20 w-20 items-center justify-center rounded-full border border-[#C5A059]/30 bg-[#C5A059]/10 transition-all duration-500 group-hover:bg-[#C5A059]/20 group-hover:border-[#C5A059]/50 group-hover:shadow-[0_0_30px_rgba(197,160,89,0.2)]">
-                    <IconComponent className="h-9 w-9 text-[#C5A059] transition-transform duration-500 group-hover:scale-110" />
+                    <IconComponent className="h-9 w-9 text-[#C5A059] transition-transform duration-500 group-hover:scale-110" aria-hidden="true" />
                   </div>
                 </motion.div>
 

@@ -30,7 +30,7 @@ export function FAQSection() {
           <p className="mt-6 text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed" style={{ lineHeight: '1.7', letterSpacing: '0.3px' }}>
             Understanding the Aurelian approach to exceptional real estate
           </p>
-          <div className="mt-12 mx-auto w-24 h-px bg-gradient-to-r from-transparent via-[#C5A059]/50 to-transparent" />
+          <div className="mt-12 mx-auto w-24 h-px bg-gradient-to-r from-transparent via-[#C5A059]/50 to-transparent" aria-hidden="true" />
         </motion.div>
 
         {/* FAQ Accordion with Staggered Animation */}
@@ -40,7 +40,7 @@ export function FAQSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <Accordion type="single" collapsible className="w-full">
+          <Accordion type="single" collapsible className="w-full" aria-label="Frequently asked questions">
             {faqItems.map((item, index) => (
               <motion.div
                 key={index}
@@ -57,7 +57,7 @@ export function FAQSection() {
                   value={`item-${index}`}
                   className="border-b border-[#2D2D2D] hover:border-[#C5A059]/30 transition-colors duration-300"
                 >
-                  <AccordionTrigger className="text-left text-white hover:text-[#C5A059] hover:no-underline py-8 text-base md:text-lg font-medium transition-colors duration-300">
+                  <AccordionTrigger className="text-left text-white hover:text-[#C5A059] hover:no-underline py-8 text-base md:text-lg font-medium transition-colors duration-300 min-h-[44px]">
                     {item.question}
                   </AccordionTrigger>
                   <AccordionContent className="text-muted-foreground leading-relaxed pb-8 text-base">

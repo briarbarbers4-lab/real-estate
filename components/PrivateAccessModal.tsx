@@ -313,7 +313,7 @@ export function PrivateAccessModal({
 
           {/* Security Badge */}
           <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground pt-2">
-            <Lock className="h-3 w-3 text-[#C5A059]/60" />
+            <Lock className="h-3 w-3 text-[#C5A059]/60" aria-hidden="true" />
             <span>SSL Secured | Your information is protected</span>
           </div>
         </form>
